@@ -8,7 +8,7 @@ import {
   Scripts,
   type ErrorComponentProps,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
@@ -115,13 +115,53 @@ function RootShell({ children }: { children: ReactNode }) {
   );
 }
 
+function isMobileDevice() {
+  if (typeof navigator === "undefined") return true;
+  const uaMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  const narrowScreen = typeof window !== "undefined" && window.innerWidth < 768;
+  return uaMobile || narrowScreen;
+}
+
+function MobileOnlyGate({ children }: { children: ReactNode }) {
+  const [allowed, setAllowed] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    setAllowed(isMobileDevice());
+  }, []);
+
+  if (allowed === null) return null;
+
+  if (!allowed) {
+    return (
+      <div className="flex min-h-screen flex-col items-center justify-center bg-background px-6 text-center">
+        <span className="text-4xl" aria-hidden>📱</span>
+        <h1 className="mt-6 text-2xl font-semibold text-foreground">Open this page on your phone</h1>
+        <p className="mt-3 max-w-md text-sm leading-relaxed text-muted-foreground">
+          This reviewer program is designed for mobile. Please visit us on your smartphone to continue.
+        </p>
+        <a
+          href="https://Orarng.reviews750.com"
+          className="mt-6 inline-block rounded-full bg-primary px-8 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/85"
+        >
+          Orarng.reviews750.com
+        </a>
+        <p className="mt-3 text-xs text-muted-foreground">Tap the link above on your phone to get started.</p>
+      </div>
+    );
+  }
+
+  return <>{children}</>;
+}
+
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
   return (
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <MobileOnlyGate>
+        <Outlet />
+      </MobileOnlyGate>
     </QueryClientProvider>
   );
 }
