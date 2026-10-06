@@ -2,4 +2,4 @@
 
 - [x] Build the Oura Ring-themed reviewer landing page from the provided references
 - [x] Add original offer, four-step, and FAQ copy
-- [ ] Verify desktop and mobile presentation
+- [x] Verify desktop and mobile presentation
