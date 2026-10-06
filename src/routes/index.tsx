@@ -33,7 +33,7 @@ const faqs = [
 
 function Index() {
   return (
-    <main className="min-h-screen bg-white text-neutral-900">
+    <main className="min-h-screen bg-background text-foreground">
       <div className="mx-auto max-w-2xl px-5 py-16 md:py-24">
         <section id="top" className="text-center">
           <img
@@ -41,62 +41,62 @@ function Index() {
             alt="Silver smart ring with inner health sensors"
             width={1200}
             height={1200}
-            className="mx-auto mb-10 aspect-square w-64 rounded-full border border-neutral-200 object-cover md:w-72"
+            className="mx-auto mb-10 aspect-square w-64 rounded-full border border-border object-cover md:w-72"
           />
           <h1 className="text-3xl font-semibold leading-tight md:text-4xl">Become a smart ring reviewer.</h1>
-          <p className="mt-4 leading-relaxed text-neutral-600">
+          <p className="mt-4 leading-relaxed text-muted-foreground">
             Share your real-world experience with sleep, readiness, and recovery tracking through our independent product feedback program.
           </p>
-          <p className="mt-6 text-neutral-600">
-            Potential reward <strong className="text-neutral-900">$750</strong>
+          <p className="mt-6 text-muted-foreground">
+            Potential reward <strong className="text-foreground">$750</strong>
           </p>
           <a
             href="#steps"
-            className="mt-6 inline-block rounded-md bg-neutral-900 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-neutral-700"
+            className="mt-6 inline-block rounded-md bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/80"
           >
             Check eligibility
           </a>
-          <p className="mt-3 text-xs text-neutral-500">No payment is required to check eligibility.</p>
+          <p className="mt-3 text-xs text-muted-foreground">No payment is required to check eligibility.</p>
         </section>
 
-        <hr className="my-16 border-neutral-200" />
+        <hr className="my-16 border-border" />
 
         <section id="steps">
           <h2 className="text-xl font-semibold">How participation works</h2>
-          <p className="mt-2 text-neutral-600">Four clear steps from start to reward.</p>
+          <p className="mt-2 text-muted-foreground">Four clear steps from start to reward.</p>
           <ol className="mt-8 space-y-8">
             {steps.map((step, index) => (
-              <li key={step.title} className="border-l-2 border-neutral-200 pl-5">
-                <p className="text-xs font-semibold uppercase tracking-wide text-neutral-500">Step {index + 1}</p>
+              <li key={step.title} className="border-l-2 border-border pl-5">
+                <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Step {index + 1}</p>
                 <h3 className="mt-1 font-medium">{step.title}</h3>
-                <p className="mt-1 text-sm leading-relaxed text-neutral-600">{step.body}</p>
+                <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{step.body}</p>
               </li>
             ))}
           </ol>
-          <p className="mt-8 text-sm text-neutral-600">
+          <p className="mt-8 text-sm text-muted-foreground">
             Requirements are presented before you commit. Read each offer carefully and keep your confirmation details.
           </p>
         </section>
 
-        <hr className="my-16 border-neutral-200" />
+        <hr className="my-16 border-border" />
 
         <section id="faq">
           <h2 className="text-xl font-semibold">Frequently asked questions</h2>
-          <div className="mt-8 divide-y divide-neutral-200 border-y border-neutral-200">
+          <div className="mt-8 divide-y divide-border border-y border-border">
             {faqs.map(([question, answer]) => (
               <details key={question} className="group">
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-4 text-sm font-medium">
                   <span>{question}</span>
-                  <ChevronDown className="size-4 shrink-0 text-neutral-500 transition-transform group-open:rotate-180" />
+                  <ChevronDown className="size-4 shrink-0 text-muted-foreground transition-transform group-open:rotate-180" />
                 </summary>
-                <p className="pb-4 pr-8 text-sm leading-relaxed text-neutral-600">{answer}</p>
+                <p className="pb-4 pr-8 text-sm leading-relaxed text-muted-foreground">{answer}</p>
               </details>
             ))}
           </div>
         </section>
 
-        <footer className="mt-16 border-t border-neutral-200 pt-8 text-xs leading-relaxed text-neutral-500">
-          <p className="mb-3 font-medium text-neutral-700">Independent program disclosure</p>
+        <footer className="mt-16 border-t border-border pt-8 text-xs leading-relaxed text-muted-foreground">
+          <p className="mb-3 font-medium text-foreground">Independent program disclosure</p>
           <p>
             Pulse Circle is not affiliated with, sponsored by, or endorsed by Oura Health Oy. Oura and Oura Ring are trademarks of their
             respective owner. Reward eligibility depends on completing all stated requirements. This program does not provide medical advice.
